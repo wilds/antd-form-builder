@@ -17,21 +17,15 @@ export declare type FormItemLayoutType = {
 
 export declare type RenderFunction = (value: any, form: FormInstance<any>, initialValues: any) => React.ReactNode;
 
-export declare type FieldTypeOption = {
-    label: string | React.ReactElement,
-    value: any,
-    disabled?: boolean
-}
-
 export declare type FieldType = {
     /** Required. The field key. Could be nested like user.name.last. It's just the key value passed to getFieldDecorator(key, options) */
     key: string;
 
     /** Alternative of key. In form v4, if you need nested property for colleced form values like : { name: { first, last } } you can define an array for the name property: ['name', 'first']. If you prefer name.first, use key to define it. */
-    name?: string | string[];
+    name?: string | stirng[];
 
     /** Label text. */
-    label?: string | React.ReactElement;
+    label: string;
 
     /** Whether the field is in view mode. Note if a field is in viewMode but FormBuilder is not, the label in the field is still right aligned. */
     viewMode?: boolean;
@@ -97,7 +91,7 @@ export declare type FieldType = {
     message?: string;
 
     /** Only used by select, radio-group. checkbox-group components. */
-    options?: string[] | FieldTypeOption[],
+    options?: any[],  //TODO
 
     /** The props passed to <Form.Item>. Below properties are short way to pass props to <Form.Item>. See more from antd's doc */
     formItemProps?: any;
@@ -168,10 +162,9 @@ export declare type Meta = {
 }
 
 export interface FormBuilderInterface {
-    meta: Meta | FieldType | FieldType[];
+    meta: Meta;
     form: FormInstance<any>;
     viewMode?: boolean;
     initialValues?: any;
     disabled?: boolean;
 }
-
